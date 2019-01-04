@@ -1,3 +1,4 @@
+import { AuthServiceProvider } from './../../providers/auth-service/auth-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -14,8 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'signup.html',
 })
 export class SignupPage {
+  responseData : any;
+  userData = { "clientId" : 1, "domain" : "Local", "username" : "nice", "password" : "nice123"};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService:AuthServiceProvider) {
+  }
+
+  signup(){
+    this.authService.postData(this.userData,'signup').then((result) => {
+      
+    });
   }
 
   ionViewDidLoad() {
