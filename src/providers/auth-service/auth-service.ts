@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
-let apiUrl = 'https://gestao.aduberlandia.com.br/' + 'accounts/ws/logar/'
+let apiUrl = 'https://gestao.aduberlandia.com.br/' + 'accounts/ws/'
 
 /*
   Generated class for the AuthServiceProvider provider.
@@ -10,6 +10,11 @@ let apiUrl = 'https://gestao.aduberlandia.com.br/' + 'accounts/ws/logar/'
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
+
+export interface IRequestOptions {
+  headers?: HttpHeaders | { [header: string]: string | Array<string> };
+}
+
 @Injectable()
 export class AuthServiceProvider {
 
@@ -19,11 +24,14 @@ export class AuthServiceProvider {
 
   postData(credentials, type) {
     return new Promise ((resolve, reject) => {
-      let headers = new Headers();
+      const options: IRequestOptions = {
+        headers: new HttpHeaders({"Content-Type": "application/json"})
+      };
 
-      this.http.post(apiUrl + type, JSON.stringify(credentials), {headers: headers})
+      this.http.post(apiUrl + type, JSON.stringify(credentials), options)
       .subscribe(res => {
-        resolve(res.json());
+        resolve(res);
+        console.log(res);
       }, (err) => {
         reject(err);
       });

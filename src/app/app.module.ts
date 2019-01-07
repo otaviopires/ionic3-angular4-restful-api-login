@@ -1,5 +1,4 @@
 import { WelcomePage } from './../pages/welcome/welcome';
-import { SignupPage } from './../pages/signup/signup';
 import { LoginPage } from './../pages/login/login';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -17,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     HomePage,
     LoginPage,
-    SignupPage,
     WelcomePage
   ],
   imports: [
@@ -29,7 +27,6 @@ import { HttpClientModule } from '@angular/common/http';
     MyApp,
     HomePage,
     LoginPage,
-    SignupPage,
     WelcomePage
   ],
   providers: [
