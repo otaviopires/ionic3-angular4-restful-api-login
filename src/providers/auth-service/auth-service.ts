@@ -31,6 +31,7 @@ export class AuthServiceProvider {
       this.http.post(apiUrl + type, JSON.stringify(credentials), options)
       .subscribe(res => {
         resolve(res);
+        console.log("auth-service works!");
         console.log(res);
       }, (err) => {
         reject(err);

@@ -10,19 +10,21 @@ import { NavController } from 'ionic-angular';
 })
 export class LoginPage {
   responseData : any;
-  userData = { "clientId" : 1, "domain" : "Local", "username" : "nice", "password" : "nice123"};
+  userData = { "clientId" : 1, "domain" : "Local", "username" : "", "password" : "", "tokenFCM" : "teste"};
 
   constructor(public navCtrl: NavController, public authService:AuthServiceProvider ) {
   }
 
   login(){
-     this.authService.postData(this.userData,'logar').then((result) => {
-      this.responseData = result;
-      console.log(this.responseData);
-      localStorage.setItem('userData', JSON.stringify(this.responseData));
-      this.navCtrl.push(HomePage);
-      }, (err) => {
-      // Error log
+    console.log(this.userData);
+    this.authService.postData(this.userData,'logar').then((result) => {
+    this.responseData = result;
+    console.log("login works!")
+    console.log(this.responseData);
+    localStorage.setItem('userData', JSON.stringify(this.responseData));
+    this.navCtrl.push(HomePage);
+    }, (err) => {
+    // Error log
     });
   }
 }

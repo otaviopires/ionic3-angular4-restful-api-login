@@ -16,11 +16,13 @@ export class HomePage {
 
     const data = JSON.parse(localStorage.getItem('userData'));
     this.userDetails = data.member;
-    console.log(this.userDetails.id);
+    console.log("User id: " + this.userDetails.id);
   
     // this.userPostData.id = this.userDetails.id;
     this.userPostData = this.userDetails;
     console.log(this.userPostData);
+    console.log("Stored token: " + this.userPostData.authenticatorToken);
+
 
   }
 
